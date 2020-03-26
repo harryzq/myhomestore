@@ -1,0 +1,17 @@
+{
+	"miniprogramRoot": "client/dist/",
+	"cloudfunctionRoot": "cloud/functions/",
+	"projectname": "tengxingjiaju",
+	"description": "腾兴家具",
+	"appid": "wx9f26a2f0d4e1c23a",
+	"setting": {
+		"urlCheck": true,
+		"es6": false,
+		"postcss": false,
+		"minified": false
+	},
+	"compileType": "miniprogram",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {}
+}
