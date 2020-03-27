@@ -5,20 +5,12 @@ import './index.scss'
 
 export default class Index extends Component {
 
-  config = {
-    navigationBarTitleText: '联系'
-  }
   constructor(){
     this.state = {
-      current: 0
+      phoneNumber: 1327331232
     }
   }
 
-  handleClick (value) {
-    this.setState({
-      current: value
-    })
-  }
   componentWillMount () { }
 
   componentDidMount () {}
@@ -29,19 +21,21 @@ export default class Index extends Component {
 
   componentDidHide () { }
 
+  makePhoneCall(){
+    Taro.makePhoneCall({
+      phoneNumber: String(this.state.phoneNumber) //仅为示例，并非真实的电话号码
+    }).then(res=>{
+      console.log(res)
+    })
+  }
   render () {
+    const {phoneNumber} = this.state
     return (
-      <View className='index'>
-        <AtTabBar
-          tabList={[
-            { title: '待办事项', text: 8 },
-            { title: '拍照' },
-            { title: '通讯录', dot: true }
-          ]}
-          fixed={true}
-          onClick={this.handleClick.bind(this)}
-          current={this.state.current}
-        />
+      <View className='_contact_warp'>
+        <View>
+          添加微信
+        </View>
+        <View onClick={this.makePhoneCall.bind(this)}>拨打电话：{phoneNumber}</View>
       </View>
     )
   }

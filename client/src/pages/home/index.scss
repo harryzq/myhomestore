@@ -5,31 +5,34 @@
     }
 }
 ._home_room{
+    position: sticky;
     margin:10px;
-    overflow: hidden;
+    top: 0;
+    background-color: #fff;
+
     color:#333;
     ._home_room_menu{
-        overflow: auto;
+      
     }
 }
 ._home_items_warps{
-    margin: 10px auto;
+    margin: 10px auto 120px auto;
     overflow-y: auto;
-    height: 600px;
 }
 ._home_items_warp{
     font-size:24px;
-    width:95%;
+    width:100%;
     display: flex;
-    border:1px solid #ddd;
+    border:1px dashed #ddd;
     justify-content: space-around;
-    height: 260px;
-    padding:10px;
-    border-radius:10px;
-    box-shadow:10px 10px 10px #ccc;
-    margin: 14px auto;
+    height: 300px;
+    align-items: center;
+    padding:20px;
+    // border-radius:10px;
+    // box-shadow:10px 10px 10px #ccc;
+    // margin: 14px auto;
     color:#333;
-    line-height:40px;
+    line-height:50px;
     ._item_name{
         font-size:36px;
     }
@@ -50,30 +53,30 @@
         color:#ccc;
     }
     image{
-        width:40%;
-        height: 100%;
+        width:50%;
+        height: 80%;
+        margin-right:40px;
     }
     ._item_action{
         display: flex;
-        justify-content: space-between;
-        border:1px solid #f1f0f0;
-        width:200px;
-        height: 40px;
-        line-height:40px;
+        justify-content: space-around;
+        width:240px;
+        height: 60px;
+        line-height:60px;
         text-align:center;
-        border-radius:40px;
         margin-top:10px;
         ._item_like{
-             width:100px;
+             width:120px;
             border-color:none;
             color:#6190E8;
             background-color:#f1f0f0;
+            border-radius:60px 0 0 60px;
         }
         ._item_buy{
-            width:100px;
+            width:120px;
             color:#fff;
              background-color:#6190E8;
-             
+             border-radius:0 60px 60px 0;
         }
     }
 }
