@@ -6,20 +6,13 @@ import a from '../../assets/images/a.png'
 export default class Index extends Component {
 
   constructor(){
+    this.config = {
+      navigationBarTitleText: '家具详情'
+    }
     this.state = {
       phoneNumber: 0
     }
   }
-
-  componentWillMount () { }
-
-  componentDidMount () {}
-
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
 
   render () {
     return (

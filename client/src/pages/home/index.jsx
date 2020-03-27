@@ -7,9 +7,6 @@ import a from '../../assets/images/a.png'
 
 export default class Index extends Component {
   constructor(){
-    this.config = {
-      navigationBarTitleText: '首页'
-    }
     this.state = {
       roomMenu:0,
       roomStyle:[]
@@ -27,7 +24,7 @@ export default class Index extends Component {
     switch (value) {
       case 0:
         this.setState({
-          roomStyle: [...Array(1).keys()]
+          roomStyle: [...Array(3).keys()]
         });
         break;
       case 1:
@@ -37,7 +34,7 @@ export default class Index extends Component {
         break;
       case 2:
         this.setState({
-          roomStyle: [...Array(3).keys()]
+          roomStyle: [...Array(10).keys()]
         });
         break;
       default:
@@ -55,8 +52,8 @@ export default class Index extends Component {
     console.log(value)
   }
   handleCardClick(e){
-    const {currentTab,updateCurrentTab} = this.context
-    updateCurrentTab(2)
+    const {updateCurrentTab} = this.context
+    
     e.stopPropagation();
     const targetData =e.target.dataset
     // 点击卡片
@@ -67,9 +64,10 @@ export default class Index extends Component {
     }
     // 点击按钮
     if(targetData.event){
-      console.log(targetData.event)
+      if(targetData.event ==='buy'){
+        updateCurrentTab(2)
+      }
     }
-    
   }
    
   render () {

@@ -14,7 +14,7 @@ export default class Index extends Component {
       navigationBarTitleText: '腾兴家具'
     }
     this.state = {
-      currentTab: 0,
+      currentTab: 3,
     }
   }
 
