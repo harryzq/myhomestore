@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Map } from '@tarojs/components'
+import { View, Map,Image } from '@tarojs/components'
 import { AtTabBar }  from 'taro-ui'
 import './index.scss'
 import location from '../../assets/icons/location.png';
@@ -53,8 +53,8 @@ export default class Index extends Component {
     Taro.getLocation({
       type: 'gcj02', //返回可以用于 Taro.openLocation的经纬度
       success: function (res) {
-        const latitude = res.latitude
-        const longitude = res.longitude
+        // const latitude = res.latitude
+        // const longitude = res.longitude
         Taro.openLocation({
           latitude: 32.267580899,
           longitude: 120.31350045,
@@ -68,7 +68,7 @@ export default class Index extends Component {
     return (
       <View className='_contact_warp'>
         <View>
-          添加微信
+          <Image src='../../assets/icons/contact_weixin.png'></Image>
         </View>
         <View onClick={this.makePhoneCall.bind(this)}>拨打电话：{phoneNumber}</View>
         <Map className='map'  scale='18' markers={markers} longitude='120.31350045' latitude='32.267580899'  showLocation enableZoom enableRotate showCompass onClick={this.onTap} />

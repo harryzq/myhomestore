@@ -46,7 +46,7 @@ export default class Search extends Component {
         <View className='_item_price'>¥99999</View>
         <View className='_item_id'>产品ID:12321312</View>
         <View className='_item_action'>
-          <View className='_item_like'><AtIcon value='heart' size='16' color='#F00'></AtIcon>想要</View>
+          <View className='_item_like'><AtIcon value='heart' size='16' color='#F00'></AtIcon>收藏</View>
           <View className='_item_buy'>立即购买</View>
         </View>
       </View>

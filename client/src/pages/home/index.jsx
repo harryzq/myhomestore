@@ -1,27 +1,43 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Image, Swiper, SwiperItem } from '@tarojs/components'
+import { View, Image, Swiper, SwiperItem,Text } from '@tarojs/components'
 import {AtSegmentedControl,AtIcon }  from 'taro-ui'
 import {TabContext} from '../create-context'
 import './index.scss'
 import a from '../../assets/images/a.png'
+import canting from '../../assets/icons/canting.svg'
+import ertong from '../../assets/icons/ertong.svg'
+import keting from '../../assets/icons/keting.svg'
+import woshi from '../../assets/icons/woshi.svg'
+import shufang from '../../assets/icons/shufang.svg'
+import qita from '../../assets/icons/qita.svg'
+import canting2 from '../../assets/icons/canting2.svg'
+import ertong2 from '../../assets/icons/ertong2.svg'
+import keting2 from '../../assets/icons/keting2.svg'
+import woshi2 from '../../assets/icons/woshi2.svg'
+import shufang2 from '../../assets/icons/shufang2.svg'
+import qita2 from '../../assets/icons/qita2.svg'
 
 export default class Index extends Component {
   constructor(){
     this.state = {
-      roomMenu:0,
-      roomStyle:[]
+      roomStyle:[],
+      currentRoom:'0'
     }
   }
   componentWillMount () {
-    this.handleClickRoom(0)
+    this.handleClickRoom()
   }
   static contextType = TabContext
 
   handleClickRoom (value) {
+    let current = value || '0'
+    if(value &&value.target){
+      current = value.target.dataset['room']
+    }
     this.setState({
-      roomMenu: value
+      currentRoom: current
     })
-    switch (value) {
+    switch (Number(current)) {
       case 0:
         this.setState({
           roomStyle: [...Array(3).keys()]
@@ -71,7 +87,7 @@ export default class Index extends Component {
   }
    
   render () {
-    const {roomStyle} = this.state
+    const {roomStyle,currentRoom} = this.state
     
     const listItems = roomStyle.map((n)=>{
       return( <View className='_home_items_warp' data-idx={n} key={n} onClick={this.handleCardClick.bind(this)}>
@@ -82,7 +98,7 @@ export default class Index extends Component {
         {/* <View data-idx={n} className='_item_price'>¥99999</View> */}
         <View data-idx={n} className='_item_id'>产品ID:12321312</View>
         <View className='_item_action'>
-          <View data-event='want' className='_item_like' onClick={this.handleCardClick.bind(this)}><AtIcon value='heart' size='16' color='#F00'></AtIcon>想要</View>
+          <View data-event='want' className='_item_like' onClick={this.handleCardClick.bind(this)}><AtIcon value='heart' size='16' color='#F00'></AtIcon>收藏</View>
           <View data-event='buy'className='_item_buy' onClick={this.handleCardClick.bind(this)}>立即购买</View>
         </View>
       </View>
@@ -113,13 +129,37 @@ export default class Index extends Component {
         </Swiper>
 
         <View className='_home_room'>
-          <AtSegmentedControl
-            customStyle='overflow: auto;height:80rpx;line-height:70rpx;'
-            className='_home_room_menu'
-            values={['卧室', '客厅', '厨房','餐厅','儿童','阳台','书房','其他']}
-            onClick={this.handleClickRoom.bind(this)}
-            current={this.state.roomMenu}
-          />
+          <View className='_home_room_menu' onClick={this.handleClickRoom.bind(this)}>
+            <View className={currentRoom==='0' ? '_room_warp_active _room_warp' :'_room_warp'} data-room='0'>
+              <Image data-room='0' src={currentRoom==='0' ? woshi :woshi2}></Image>
+              <Text data-room='0' >卧室</Text>
+            </View>
+
+            <View className={currentRoom==='1' ? '_room_warp_active _room_warp' :'_room_warp'} data-room='1'>
+              <Image data-room='1' src={currentRoom==='1' ?  keting :keting2}></Image>
+              <Text data-room='1'>客厅</Text>
+            </View>
+
+            <View className={currentRoom==='2' ? '_room_warp_active _room_warp' :'_room_warp'} data-room='2'>
+              <Image data-room='2' src={currentRoom==='2' ? canting:canting2}></Image>
+              <Text data-room='2' >餐厅</Text>
+            </View>
+
+            <View className={currentRoom==='3' ? '_room_warp_active _room_warp' :'_room_warp'} data-room='3'>
+              <Image data-room='3' src={currentRoom==='3' ? ertong :ertong2}></Image>
+              <Text data-room='3'>儿童</Text>
+            </View>
+
+            <View className={currentRoom==='4' ? '_room_warp_active _room_warp' :'_room_warp'} data-room='4'>
+              <Image data-room='4' src={currentRoom==='4' ? shufang: shufang2}></Image>
+              <Text data-room='4' >书房</Text>
+            </View>
+
+            <View className={currentRoom==='5' ? '_room_warp_active _room_warp' :'_room_warp'} data-room='5'>
+              <Image data-room='5' src={currentRoom==='5'? qita : qita2}></Image>
+              <Text data-room='5'>其他</Text>
+            </View>
+          </View>
         </View>
         <View className='_home_items_warps'>
           {listItems}
